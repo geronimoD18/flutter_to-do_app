@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/add_update_screen.dart';
 import 'package:todo_app/db_handler.dart';
-
 import 'model.dart';
 
 class HomeScreen extends StatefulWidget{
@@ -31,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Drawer(),
       appBar: AppBar(
         title: Text(
-            "DP-TODO",
+            "Mis Tareas",
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w600,
@@ -62,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             else if(snapshot.data!.length == 0){
               return Center(
                 child: Text(
-                  "No Tasks found",
+                  "No se encontraron tareas",
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,

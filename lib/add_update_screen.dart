@@ -47,9 +47,9 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
     final descController = TextEditingController(text: widget.todoDesc);
     String appTitle;
     if(widget.update == true){
-      appTitle = "Update Task";
+      appTitle = "Actualizar tarea";
     }else{
-      appTitle = "Add Task";
+      appTitle = "Crear tarea";
     }
 
     return Scaffold(
@@ -78,11 +78,11 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
                   controller: titleController,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    hintText: "Note Title",
+                    hintText: "Titulo de la tarea",
                   ),
                   validator: (value){
                     if(value!.isEmpty){
-                      return "Enter a title";
+                      return "Introduce un titulo";
                     }
                     return null;
                   },
@@ -96,11 +96,11 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
                     controller: descController,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      hintText: "Note Description",
+                      hintText: "Descripcion de la tarea",
                     ),
                     validator: (value){
                       if(value!.isEmpty){
-                        return "Enter a description";
+                        return "Introduce una descripcion";
                       }
                       return null;
                     },
@@ -141,7 +141,7 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
                           titleController.clear();
                           descController.clear();
                           //confirmacion de registro agregado
-                          print("Data added");
+                          print("Se agrego la tarea");
                         }
                       },
                       child: Container(
@@ -159,7 +159,7 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
                           //   ),
                           // ],
                         ),
-                        child: Text("Save", style: TextStyle(
+                        child: Text("Guardar", style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
@@ -193,7 +193,7 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
                           //   ),
                           // ],
                         ),
-                        child: Text("Clear",
+                        child: Text("Limpiar",
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.w500,
