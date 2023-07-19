@@ -5,6 +5,20 @@ import 'package:todo_app/home_screen.dart';
 import 'package:todo_app/model.dart';
 
 class AddUpdateTask extends StatefulWidget{
+  int? todoId;
+  String? todoTitle;
+  String? todoDesc;
+  String? todoDT;
+  bool? update;
+
+  AddUpdateTask({
+    this.todoId,
+    this.todoTitle,
+    this.todoDesc,
+    this.todoDT,
+    this.update
+  });
+
   @override
   State<AddUpdateTask> createState() => _AddUpdateTaskState();
 }
@@ -29,12 +43,19 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
 
   @override
   Widget build(BuildContext context){
-    final titleController = TextEditingController();
-    final descController = TextEditingController();
+    final titleController = TextEditingController(text: widget.todoTitle);
+    final descController = TextEditingController(text: widget.todoDesc);
+    String appTitle;
+    if(widget.update == true){
+      appTitle = "Update Task";
+    }else{
+      appTitle = "Add Task";
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Add/Update Task",
+          appTitle,
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w600,
@@ -98,13 +119,22 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
                     child: InkWell(
                       onTap: (){
                         if(_fromKey.currentState!.validate()){
-                          dbHelper!.insert(TodoModel(
-                            title: titleController.text,
-                            desc: descController.text,
-                            dateandtime: DateFormat('yMd')
-                                .add_jm()
-                                .format(DateTime.now())
-                                .toString()));
+                          if(widget.update == true){
+                            dbHelper!.insert(TodoModel(
+                              id: widget.todoId,
+                              title: titleController.text,
+                              desc: descController.text,
+                              dateandtime: widget.todoDT,
+                            ));
+                          }else{
+                            dbHelper!.insert(TodoModel(
+                              title: titleController.text,
+                              desc: descController.text,
+                              dateandtime: DateFormat('yMd')
+                                  .add_jm()
+                                  .format(DateTime.now())
+                                  .toString()));
+                          }
                           
                           Navigator.push(context, MaterialPageRoute(builder:
                           (context)=> HomeScreen()));
