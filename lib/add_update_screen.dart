@@ -120,7 +120,7 @@ class _AddUpdateTaskState extends State<AddUpdateTask> {
                       onTap: (){
                         if(_fromKey.currentState!.validate()){
                           if(widget.update == true){
-                            dbHelper!.insert(TodoModel(
+                            dbHelper!.update(TodoModel(
                               id: widget.todoId,
                               title: titleController.text,
                               desc: descController.text,
